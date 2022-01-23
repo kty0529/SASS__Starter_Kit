@@ -6,12 +6,34 @@ $pixel: 8;
 $ff-default: 'Spoqa Han Sans Neo', 'AppleSDGothicNeo', 'Noto Sans CJK KR', 'Malgun Gothic', sans-serif;
 
 
-// !default로 선언된 반응형 기준 변수 값 변경
-// comma로 구분하는 것에 주의
+// 색상값, 변수명 부트스트랩 카피
+// https://flatuicolors.com/palette/defo
+$primary:   #2c3e50 !default;
+$secondary: #7f8c8d !default;
+$success:   #27ae60 !default;
+$info:      #3498db !default;
+$warning:   #f1c40f !default;
+$danger:    #c0392b !default;
+$light:     #ecf0f1 !default;
+$dark:      #222 !default;
+
+$theme-colors: (
+	"primary":    $primary,
+	"secondary":  $secondary,
+	"success":    $success,
+	"info":       $info,
+	"warning":    $warning,
+	"danger":     $danger,
+	"light":      $light,
+	"dark":       $dark
+) !default;
+
+
+// 반응형 기준
 @use '../base/grid' with (
 	$container: 1000px,
 	// $gutter: 30px,
 	// $descktop: 1024px,
 	// $tablet: 768px,
 	// $mobile: 375px,
-)
+);

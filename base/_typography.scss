@@ -2,5 +2,5 @@ html,
 body {
 	font-size: gap(2);
 	font-family: $ff-default;
-	color: #2c3e50;
+	color: map-get($theme-colors, 'dark');
 }
