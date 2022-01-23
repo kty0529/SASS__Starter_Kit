@@ -29,11 +29,25 @@ $theme-colors: (
 ) !default;
 
 
-// 반응형 기준
-@use '../base/grid' with (
-	$container: 1000px,
-	// $gutter: 30px,
-	// $descktop: 1024px,
-	// $tablet: 768px,
-	// $mobile: 375px,
+// 반응형
+$container: 1200px !default;
+$gutter: 30px !default;
+
+$descktop: 1024px !default;
+$tablet: 768px !default;
+$mobile: 375px !default;
+
+$columns: (
+	'1': 8.333333%,
+	'2': 16.666666%,
+	'3': 25%,
+	'4': 33.333333%,
+	'5': 41.666666%,
+	'6': 50%,
+	'7': 58.333333%,
+	'8': 66.666666%,
+	'9': 75%,
+	'10': 83.333333%,
+	'11': 91.666666%,
+	'12': 100%
 );
