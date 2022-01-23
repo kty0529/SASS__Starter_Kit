@@ -1,0 +1,4 @@
+// 기본 $pixel을 기반으로 공통 크기 지정
+@function gap($line: 1, $unit: 'px') {
+	@return #{$pixel * $line + $unit};
+}

@@ -1,0 +1,17 @@
+// 기본 픽셀 배율
+$pixel: 8;
+
+
+// 타이포그래피
+$ff-default: 'Spoqa Han Sans Neo', 'AppleSDGothicNeo', 'Noto Sans CJK KR', 'Malgun Gothic', sans-serif;
+
+
+// !default로 선언된 반응형 기준 변수 값 변경
+// comma로 구분하는 것에 주의
+@use '../base/grid' with (
+	$container: 1000px,
+	// $gutter: 30px,
+	// $descktop: 1024px,
+	// $tablet: 768px,
+	// $mobile: 375px,
+)
