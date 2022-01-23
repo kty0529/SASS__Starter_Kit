@@ -5,3 +5,9 @@
 @import './base/reset';
 @import './base/grid';
 @import './base/typography';
+@import './base/colors';
+
+// 사용자 코드 입력
+body {
+	background-color: map-get($theme-colors, 'light'); // == $light
+}
