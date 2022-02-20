@@ -49,6 +49,14 @@
 }
 
 
+// 순서 제어
+@for $i from 1 to 10 {
+	.order-#{$i} {
+		order: #{$i};
+	}
+}
+
+
 // 기본 제어
 @each $key, $value in $columns {
 	.col-#{$key}, .col-offset-#{$key},
