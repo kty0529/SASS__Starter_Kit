@@ -118,3 +118,26 @@
 @media all and (max-width: 319px) {
 	html, body { display: none; }
 }
+
+
+// 정렬
+$flex-align: (
+	'justify-content': (
+		'start': 'flex-start',
+		'end': 'flex-end',
+		'center': 'center',
+	),
+	'align-items': (
+		'start': 'flex-start',
+		'end': 'flex-end',
+		'center': 'center',
+	),
+);
+
+@each $k, $v in $flex-align {
+	@each $i, $o in $v {
+		.#{$k}-#{$i} {
+			#{$k}: #{$o};
+		}
+	}
+}
