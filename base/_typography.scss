@@ -3,7 +3,7 @@
 
 html,
 body {
-	font-size: gap(2);
+	font-size: rem-calc(16);
 	font-family: $ff-default;
 	color: map-get($theme-colors, 'dark');
 }
