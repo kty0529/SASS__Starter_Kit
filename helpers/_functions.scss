@@ -1,6 +1,6 @@
 // NOTE: http://foundation.zurb.com/
 @function strip-unit($num) {
-  @return $num / ($num * 0 + 1);
+  @return math.div($num, ($num * 0 + 1));
 }
 
 // New Syntax, allows to optionally calculate on a different base value to counter compounding effect of em\'s.
@@ -13,7 +13,7 @@
 // If you require to comma separate your list
 // rem-calc((16px, 32px, 48), 8px);
 @function convert-to-rem($value, $base-value: $rem-base) {
-  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  $value: math.div(strip-unit($value), strip-unit($base-value)) * 1rem;
   @if ($value == 0rem) { $value: 0; } // Turn 0em into 0
   @return $value;
 }
