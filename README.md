@@ -37,9 +37,9 @@ mixin으로 만들기 힘들거나 연산이 필요한 경우 등 조건이 다�
 
 <br>
 
-## function
+## 기능 소개
 
-### `rem-calc()`
+### function `rem-calc()`
 키트에서 사용중인 `rem-calc` 함수는 [Foundation](http://foundation.zurb.com/)의 기능을 가져와 입맛에 맞게 커스텀했습니다.
 
 `rem-base`의 값에 따라 `rem`단위로 자동 변환되며 다음과 같이 사용할 수 있습니다.
