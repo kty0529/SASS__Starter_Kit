@@ -12,5 +12,6 @@
 
 // 사용자 코드 입력
 body {
+  padding: rem-calc(10 20 30 20); // rem-calc function sample
 	background-color: map-get($theme-colors, 'light'); // == $light
 }
