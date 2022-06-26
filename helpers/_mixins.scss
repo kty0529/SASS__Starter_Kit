@@ -132,7 +132,7 @@
 	overflow: hidden;
 }
 
-@mixin box-ellipsis($line: 3, $lineHeight: 20px, $boxHeight: 'auto') {
+@mixin box-ellipsis($line: 3, $lineHeight: rem-calc(20), $boxHeight: 'auto') {
 	display: -webkit-box;
 	-webkit-line-clamp: $line;
 	-webkit-box-orient: vertical;
