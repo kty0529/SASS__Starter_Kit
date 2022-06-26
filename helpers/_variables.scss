@@ -27,12 +27,14 @@ $theme-colors: (
 
 
 // 반응형
-$container: 1200px !default;
-$gutter: 30px !default;
+$container: rem-calc(1080) !default;
+$gutter: rem-calc(30) !default;
 
-$descktop: 1024px !default;
-$tablet: 768px !default;
-$mobile: 375px !default;
+// Desktop First이며, 아래 기기 "이하"에서 반응형 작동함
+// 예) 모니터 가로길이 1024px 까지는 PC로 인정 1023px 부터 테블릿
+$descktop: rem-calc(1024 - 1) !default;
+$tablet: rem-calc(783 - 1) !default;
+$mobile: rem-calc(425 - 1) !default;
 
 $columns: (
 	'1': 8.333333%,

@@ -17,7 +17,7 @@
 
 @mixin tablet($width: '') {
 	@if $width == '' {
-		$width: $tablet;
+		$width: $descktop;
 	}
 
 	@include max-w($width) {
@@ -27,7 +27,7 @@
 
 @mixin mobile($width: '') {
 	@if $width == '' {
-		$width: $mobile;
+		$width: $tablet;
 	}
 
 	@include max-w($width) {
@@ -37,7 +37,7 @@
 
 @mixin small($width: '') {
 	@if $width == '' {
-		$width: $small;
+		$width: $mobile;
 	}
 
 	@include max-w($width) {
