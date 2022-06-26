@@ -119,24 +119,6 @@
 	}
 }
 
-@mixin placeholder {
-	&::-webkit-input-placeholder {
-		@content;
-	}
-	&::-moz-placeholder {
-		@content;
-	}
-	&:-ms-input-placeholder {
-		@content;
-	}
-	&:-moz-placeholder {
-		@content;
-	}
-	&::placeholder {
-		@content;
-	}
-}
-
 @mixin text-ellipsis() {
 	display: inline-block;
 	text-overflow: ellipsis;
