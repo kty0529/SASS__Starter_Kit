@@ -7,12 +7,9 @@
 
 ## base
 ### 1. _reset.scss
-스타일을 초기화 해줍니다.
+브라우저가 모든 요소를 ​일관되게 렌더링하도록 스타일을 초기화 해줍니다.
 
-### 2. _grid.scss
-Flexbox 기반 <u>[Grid 시스템](https://getbootstrap.com/docs/5.1/layout/grid/)</u>을 구성합니다.
-
-### 3. _typography.scss
+### 2. _typography.scss
 기본 폰트 스타일을 구성합니다.
 
 <br>
