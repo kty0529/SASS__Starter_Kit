@@ -3,10 +3,10 @@
 
 html,
 body {
-	font-size: rem-calc(16);
-	font-family: $ff-default;
-	color: map-get($theme-colors, 'dark');
-	word-break: break-all;
-  word-wrap: break-word;
+  color: map-get($theme-colors, 'dark');
+  font-family: $ff-default;
+  font-size: rem-calc(16);
   overflow-wrap: break-word;
+  word-break: break-all;
+  word-wrap: break-word;
 }
