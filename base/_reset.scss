@@ -9,7 +9,7 @@ html, body {
   font-size: 1em;
   font-weight: 400;
   line-height: 1.8;
-  overflow-x: hidden;
+  overflow-x: clip;
 
   /* stylelint-disable-next-line order/properties-order */
   -webkit-font-smoothing: antialiased;
