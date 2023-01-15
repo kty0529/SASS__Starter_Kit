@@ -61,7 +61,7 @@ $inputType: ('text', 'search', 'tel', 'url', 'email', 'password', 'submit');
   }
 }
 
-button, select {
+button, select, label {
   cursor: pointer;
   text-transform: none;
 }
