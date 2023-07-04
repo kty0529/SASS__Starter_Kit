@@ -1,6 +1,3 @@
-@use 'sass:list';
-@use 'sass:math';
-
 // NOTE: http://foundation.zurb.com/
 @function strip-unit($num) {
   @return math.div($num, ($num * 0 + 1));
