@@ -222,6 +222,7 @@ body {
 body {
   padding: 0.625rem;
   background-color: #ecf0f1;
+  font-family: "Noto Sans KR", "AppleSDGothicNeo", "Noto Sans CJK KR", "Malgun Gothic", sans-serif;
 }
 @media (max-width: 767px) {
   body {
