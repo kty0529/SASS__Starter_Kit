@@ -26,4 +26,10 @@ body {
   // map.get 함수 사용 예제
   // $theme-colors 배열에서 원하는 key 값을 넣으면 value 값을 가져온다.
   background-color: map.get($theme-colors, 'light'); // == $light
+
+
+  // 반응형 코드 예제
+  @media ($md_down) {
+    font-size: rem-calc(14);
+  }
 }

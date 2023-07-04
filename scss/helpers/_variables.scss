@@ -4,7 +4,8 @@ $ff-default: 'AppleSDGothicNeo', 'Noto Sans CJK KR', 'Malgun Gothic', sans-serif
 
 
 // 색상값, 변수명 부트스트랩 카피
-// 색조합: https://flatuicolors.com/palette/defo
+// https://getbootstrap.com/docs/5.3/customize/color/
+// https://flatuicolors.com/palette/defo
 $primary:   #2c3e50 !default;
 $secondary: #7f8c8d !default;
 $success:   #27ae60 !default;
@@ -26,12 +27,32 @@ $theme-colors: (
 ) !default;
 
 
-// 반응형
+// 레이아웃
 $container: rem-calc(1080) !default;
-$gutter: rem-calc(30) !default;
+$gutter: rem-calc(16) !default;
 
-// Desktop First이며, 아래 기기 "이하"에서 반응형 작동함
-// 예) 모니터 가로길이 1024px 까지는 PC로 인정 1023px 부터 테블릿
-$descktop: rem-calc(1024 - 1) !default;
-$tablet: rem-calc(783 - 1) !default;
-$mobile: rem-calc(425 - 1) !default;
+
+// breakpoints
+// https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+// media query는 화면의 크기에 따라 변경되기 때문에 rem 단위가 적용되지 않는다.
+$xxl_up: 'min-width: #{map.get($grid-breakpoints, 'xxl')}';
+$xl_up:  'min-width: #{map.get($grid-breakpoints, 'xl')}';
+$lg_up:  'min-width: #{map.get($grid-breakpoints, 'lg')}';
+$md_up:  'min-width: #{map.get($grid-breakpoints, 'md')}';
+$sm_up:  'max-width: #{map.get($grid-breakpoints, 'sm')}';
+$xs_up:  'max-width: #{map.get($grid-breakpoints, 'xs')}';
+
+$xxl_down: 'max-width: #{map.get($grid-breakpoints, 'xxl') - 1}';
+$xl_down:  'max-width: #{map.get($grid-breakpoints, 'xl') - 1}';
+$lg_down:  'max-width: #{map.get($grid-breakpoints, 'lg') - 1}';
+$md_down:  'max-width: #{map.get($grid-breakpoints, 'md') - 1}';
+$sm_down:  'max-width: #{map.get($grid-breakpoints, 'sm') - 1}';

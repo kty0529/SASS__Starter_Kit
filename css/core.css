@@ -223,5 +223,10 @@ body {
   padding: 0.625rem;
   background-color: #ecf0f1;
 }
+@media (max-width: 767px) {
+  body {
+    font-size: 0.875rem;
+  }
+}
 
 /*# sourceMappingURL=core.css.map */
