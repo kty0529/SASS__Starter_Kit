@@ -10,8 +10,11 @@ html, body {
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   line-height: 1.8;
+  overflow-wrap: break-word;
   overflow-x: clip;
   -webkit-text-size-adjust: 100%;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 main, header, footer, section, article, aside, nav, hgroup, details, menu, figure, figcaption {
@@ -25,6 +28,12 @@ a {
 
 p, h1, h2, h3, h4, h5, h6 {
   margin: 0;
+}
+
+ol, ul, li, dl, dt, dd {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 img {
