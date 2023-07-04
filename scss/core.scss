@@ -35,3 +35,9 @@ body {
     font-size: rem-calc(14);
   }
 }
+
+.container {
+  max-width: $container;
+  padding: 0 $gutter;
+  margin: 0 auto;
+}
