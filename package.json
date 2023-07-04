@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "lint:css": "stylelint \"assets/**/*.scss\" --config .stylelintrc.json --fix",
-    "watch": "sass --watch assets/"
+    "lint": "stylelint \"scss/**/*.scss\" --config .stylelintrc.json --fix",
+    "watch": "sass --watch scss:css"
   },
   "dependencies": {
     "stylelint": "^14.16.1",
