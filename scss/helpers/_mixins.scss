@@ -1,51 +1,4 @@
-// 반응형 미디어쿼리
-@mixin max-w($attr) {
-  @media all and (max-width: #{$attr}) {
-    @content;
-  }
-}
-@mixin min-w($attr) {
-  @media all and (min-width: #{$attr}) {
-    @content;
-  }
-}
-@mixin min-max-w($min, $max) {
-  @media all and (min-width: #{$min}) and (max-width: #{$max}) {
-    @content;
-  }
-}
-
-@mixin tablet($width: '') {
-  @if $width == '' {
-    $width: $descktop;
-  }
-
-  @include max-w($width) {
-    @content;
-  }
-}
-
-@mixin mobile($width: '') {
-  @if $width == '' {
-    $width: $tablet;
-  }
-
-  @include max-w($width) {
-    @content;
-  }
-}
-
-@mixin small($width: '') {
-  @if $width == '' {
-    $width: $mobile;
-  }
-
-  @include max-w($width) {
-    @content;
-  }
-}
-
-// 포지션 관련
+// 화면 채우기
 @mixin fullscreen($z: 1, $p: 'absolute') {
   position: #{$p};
   z-index: $z;
@@ -55,8 +8,10 @@
   height: 100%;
 }
 
-@mixin position($p: 'center') {
+// 요소 띄우기
+@mixin absolute($p: 'center') {
   @if #{$p} == 'center' {
+    // 중앙
     position: absolute;
     top: 0;
     right: 0;
@@ -64,11 +19,13 @@
     left: 0;
     margin: auto;
   } @else if #{$p} == 'vertical' {
+    // 세로
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto 0;
   } @else if #{$p} == 'horizontal' {
+    // 가로
     position: absolute;
     right: 0;
     left: 0;
@@ -76,9 +33,9 @@
   }
 }
 
-// 기타 mixin
-@mixin disable($boolean: true) {
-  @if $boolean == true {
+// 선택 차단
+@mixin disable($boolean: 'true') {
+  @if $boolean == 'true' {
     pointer-events: none;
     touch-action: none;
     user-select: none;
@@ -89,6 +46,7 @@
   }
 }
 
+// 한 줄 말줄임
 @mixin text-ellipsis() {
   display: inline-block;
   overflow: hidden;
@@ -96,6 +54,7 @@
   white-space: nowrap;
 }
 
+// 여러줄 말줄임
 @mixin box-ellipsis($line: 3, $lineHeight: rem-calc(20), $boxHeight: 'auto') {
   display: -webkit-box;
   overflow: hidden;
