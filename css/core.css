@@ -259,8 +259,8 @@ body {
 }
 
 .container {
-  max-width: 67.5rem;
-  padding: 0 1rem;
+  max-width: rem-calc(1080);
+  padding: 0 rem-calc(16);
   margin: 0 auto;
 }
 
