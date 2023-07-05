@@ -29,6 +29,7 @@
 ### _index.scss
 helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들었습니다.
 
+호출할 땐 `_index.scss`의 선언은 생략해도 됩니다.
 ```scss
 @import '/scss/helpers';
 ```
