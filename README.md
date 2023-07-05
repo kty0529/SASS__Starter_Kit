@@ -51,7 +51,7 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 
 ## 기능 소개
 
-### function `rem-calc()`
+### `rem-calc()`
 **px**을 **rem**으로 변환해주는 함수입니다.
 <br>[Foundation](http://foundation.zurb.com/)의 기능을 가져와 Kit에 맞게 일부 수정했습니다.
 
