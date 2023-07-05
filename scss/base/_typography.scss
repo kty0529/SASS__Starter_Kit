@@ -1,9 +1,3 @@
-html,
-body {
-  color: map.get($theme-colors, 'dark');
-  font-family: $ff-default;
-}
-
 strong, b {
   font-weight: 700;
 }

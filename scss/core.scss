@@ -6,10 +6,6 @@
 // helpers
 @import './helpers';
 
-// variables에 선언된 default 값은 여기서 override 가능.
-// $ff-default: 'Noto Sans KR', 'AppleSDGothicNeo', 'Malgun Gothic', sans-serif;
-// @debug $ff-default;
-
 // base
 @import './base/reset';
 @import './base/typography';
@@ -27,12 +23,6 @@ body {
   // map.get 함수 사용 예제
   // $theme-colors 배열에서 원하는 key 값을 넣으면 value 값을 가져온다.
   background-color: map.get($theme-colors, 'light'); // == $light
-
-
-  // $ff-dafeult에 정의된 기본 폰트에 추가 폰트 선언
-  // @result: 'Noto Sans KR', 'AppleSDGothicNeo', 'Malgun Gothic', sans-serif
-  // 값을 덮어쓸 수도 있지만 이렇게 추가할 수도 있다.
-  font-family: list.join("Noto Sans KR", $ff-default);
 
 
   // 반응형 코드 예제
