@@ -7,6 +7,22 @@
 
 <br>
 
+
+## Install
+
+```
+npm run install
+```
+
+```
+npm run watch
+```
+
+build /scss -> /css
+
+
+<br>
+
 ## base
 ### _reset.scss
 브라우저에서 모든 요소를 ​일관되게 보여주도록 스타일을 초기화 해줍니다.
