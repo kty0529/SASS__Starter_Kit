@@ -12,9 +12,6 @@
 
 ```
 npm run install
-```
-
-```
 npm run watch
 ```
 
