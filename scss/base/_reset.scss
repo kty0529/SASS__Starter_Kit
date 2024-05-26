@@ -139,6 +139,7 @@ table {
 
 // [접근성] 스크린 리더기를 위한 클래스
 // https://make.wordpress.org/accessibility/handbook/markup/the-css-class-screen-reader-text/
+.blind,
 .screen-reader-text {
   position: absolute;
   overflow: hidden;
@@ -150,21 +151,22 @@ table {
   clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
   word-wrap: normal !important;
+
+  &:focus {
+    z-index: 100000;
+    top: 5px;
+    left: 5px;
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 15px 23px 14px;
+    background-color: #eee;
+    clip: auto !important;
+    clip-path: none;
+    color: #444;
+    font-size: 1em;
+    line-height: normal;
+    text-decoration: none;
+  }
 }
 
-.screen-reader-text:focus {
-  z-index: 100000;
-  top: 5px;
-  left: 5px;
-  display: block;
-  width: auto;
-  height: auto;
-  padding: 15px 23px 14px;
-  background-color: #eee;
-  clip: auto !important;
-  clip-path: none;
-  color: #444;
-  font-size: 1em;
-  line-height: normal;
-  text-decoration: none;
-}
