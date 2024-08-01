@@ -13,12 +13,7 @@
 
 // 사용자 코드 입력
 body {
-  // ram-calc 함수 사용 예제
-  // px 값을 넣으면 rem 값으로 변환해준다.
-  padding: rem-calc(10);
-  // padding: rem-calc(10 20);
-  // padding: rem-calc(10 20 30);
-  // padding: rem-calc(10 20 30 40);
+  padding: 10px;
 
   // map.get 함수 사용 예제
   // $theme-colors 배열에서 원하는 key 값을 넣으면 value 값을 가져온다.
@@ -27,7 +22,7 @@ body {
 
   // 반응형 코드 예제
   @media ($md_down) {
-    font-size: rem-calc(14);
+    font-size: 14px;
   }
 }
 

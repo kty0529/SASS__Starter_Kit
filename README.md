@@ -60,24 +60,3 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 
 ## core.scss
 `/base`와 `/helpers`의 파일을 적절한 순서에 맞게 불러와 최종 compile 하는 파일입니다.
-
-<br>
-
-## 기능 소개
-
-### `rem-calc()`
-**px**을 **rem**으로 변환해주는 함수입니다.
-<br>[Foundation](http://foundation.zurb.com/)에서 제공하는 코드를 Kit에 맞게 일부 수정해서 사용중입니다.
-
-`_variables.scss/$rem-base`의 값에 따라 `rem`단위로 자동 계산되며 다음과 같이 사용할 수 있습니다.
-
-| Before | After |
-|--------|------|
-| `padding: rem-calc(16);` | `padding: 1rem;` |
-| `padding: rem-calc(16 16);` | `padding: 1rem 1rem;` |
-| `padding: rem-calc(16 16 16);` | `padding: 1rem 1rem 1rem;` |
-| `padding: rem-calc(16 16 16 16);` | `padding: 1rem 1rem 1rem 1rem;` |
-
-⭐️ 단위를 입력해도 알아서 제거되고 `rem`으로 변경됩니다.
-
-**예시)** `rem-calc(16px 16)` -> `1rem 1rem`

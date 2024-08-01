@@ -55,7 +55,7 @@
 }
 
 // 여러줄 말줄임
-@mixin box-ellipsis($line: 3, $lineHeight: rem-calc(20), $boxHeight: 'auto') {
+@mixin box-ellipsis($line: 3, $lineHeight: 20px, $boxHeight: 'auto') {
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;
