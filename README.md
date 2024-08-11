@@ -52,10 +52,11 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 ### 3. _mixins.scss
 재사용 가능한 속성을 모아두었습니다.
 
-#### fullscreen($z: 1, $p: 'absolute')
+#### fullscreen
 화면 전체에 꽉 차게 만듭니다.
 
 ```scss
+// @params($z, $p)
 // $z: z-index (default: 1)
 // $p: position (default: absolute)
 
@@ -63,11 +64,14 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 @include fullscreen(2, 'fixed');
 ```
 
-#### absolute($p: 'center')
+#### absolute
 요소를 공중에 띄우며 `$p` 값을 기준으로 정렬합니다.
+<br>이 mixin이 적용된 요소는 `width`, `height`값이 필요합니다.
 
 ```scss
-// $p: center(정중앙), vertical(세로중앙), horizontal(가로중앙)
+// @params($p)
+// $p: position / center(정중앙, default), vertical(세로중앙), horizontal(가로중앙)
+
 @include absolute();
 @include absolute('vertical');
 ```
@@ -76,7 +80,9 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 사용자의 클릭(또는 터치) 액션 및 선택을 막습니다.
 
 ```scss
-// $boolean: true, false (default: true)
+// @params($boolean)
+// $boolean: true (default), false
+
 .element {
   @include disabled();
 
@@ -87,7 +93,7 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 ```
 
 
-#### text-ellipsis()
+#### text-ellipsis
 한 줄 말줄임 처리를 합니다.
 
 ```scss
@@ -96,10 +102,11 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 }
 ```
 
-#### box-ellipsis($line: 3, $lineHeight: 20px, $boxHeight: 'auto')
+#### box-ellipsis
 여러 줄 말줄임 처리를 합니다. 파라미터를 변경해 원하는 크기로 맞출 수 있고 박스 크기를 자유롭게 하거나 고정 값으로 설정할 수 있습니다.
 
 ```scss
+// @params($line, $lineHeight, $boxHeight)
 // $line: 1~n (default: 3)
 // $lineHeight: 00px (default 20px)
 // $boxHeight: auto, 40px (default: auto)
@@ -114,9 +121,8 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 ```
 
 #### 6. px to vw
-
 반응형 작업 중, 비율에 맞게 줄어들어야 하는 랜딩 페이지 등을 만들어야 하는 경우를 대비해 px 을 vw 단위로 변환해주는 mixin 입니다.
-<br> 기준이 되는 `$max-width`는 helper/variables의 `$grid-breakpoints`의 `md` 값이 기준이 됩니다.
+<br> 기준이 되는 `$max-width`는 `helper/variables`의 `$grid-breakpoints`의 `md`값을 기준으로 합니다.
 
 ```scss
 .element {
