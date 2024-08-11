@@ -56,9 +56,9 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 화면 전체에 꽉 차게 만듭니다.
 
 ```scss
-// @params($z, $p)
-// $z: z-index (default: 1)
-// $p: position (default: absolute)
+// @params($z: 1, $p, 'absolute')
+// $z: z-index / 1~n (숫자)
+// $p: position / absolute, fixed
 
 @include fullscreen(1);
 @include fullscreen(2, 'fixed');
@@ -69,8 +69,8 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 <br>이 mixin이 적용된 요소는 `width`, `height`값이 필요합니다.
 
 ```scss
-// @params($p)
-// $p: position / center(정중앙, default), vertical(세로중앙), horizontal(가로중앙)
+// @params($p: 'center')
+// $p: position / center(정중앙), vertical(세로중앙), horizontal(가로중앙)
 
 @include absolute();
 @include absolute('vertical');
@@ -80,8 +80,8 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 사용자의 클릭(또는 터치) 액션 및 선택을 막습니다.
 
 ```scss
-// @params($boolean)
-// $boolean: true (default), false
+// @params($boolean: 'true')
+// $boolean: true, false
 
 .element {
   @include disabled();
@@ -106,10 +106,10 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 여러 줄 말줄임 처리를 합니다. 파라미터를 변경해 원하는 크기로 맞출 수 있고 박스 크기를 자유롭게 하거나 고정 값으로 설정할 수 있습니다.
 
 ```scss
-// @params($line, $lineHeight, $boxHeight)
-// $line: 1~n (default: 3)
-// $lineHeight: 00px (default 20px)
-// $boxHeight: auto, 40px (default: auto)
+// @params($line: 3, $lineHeight: 20px, $boxHeight: 'auto')
+// $line: 1~n (숫자)
+// $lineHeight: 00px
+// $boxHeight: 'auto', 40px
 
 .element {
   // line-height가 20px인 글을 3줄 표시 후 말줄임, 박스 높이 60px 고정
