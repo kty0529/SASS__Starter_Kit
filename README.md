@@ -120,7 +120,7 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 }
 ```
 
-#### 6. px to vw
+#### px to vw
 반응형 작업 중, 비율에 맞게 줄어들어야 하는 랜딩 페이지 등을 만들어야 하는 경우를 대비해 px 을 vw 단위로 변환해주는 mixin 입니다.
 <br> 기준이 되는 `$max-width`는 `helper/variables`의 `$grid-breakpoints`의 `md`값을 기준으로 합니다.
 
