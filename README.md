@@ -28,8 +28,7 @@ build /scss -> /css
 `strong`, `heading` 등 문단 관련 공통 스타일을 관리합니다.
 
 ### _colors.scss
-`/helpers/_variables.scss`에 정의된 `$theme-colors`를 기반으로 "글자색", "배경색"을 지정할 수 있는 기본 class가 선언되어있고
-색상 관련 스타일을 관리할 수 있습니다.
+`/helpers/_variables.scss`에 정의된 `$theme-colors`를 기반으로 '글자색', '배경색'을 지정할 수 있는 기본 class가 선언되어있고 색상 관련 스타일을 관리하기 위해 추가했습니다.
 
 ```html
 <span class="text-primary">글자색 #2c3e50</span>
@@ -39,53 +38,79 @@ build /scss -> /css
 <br>
 
 ## helpers
-### _index.scss
+### 1. _index.scss
 helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들었습니다.
+<br>* 호출할 땐 `_index.scss`의 선언은 생략해도 됩니다.
 
-호출할 땐 `_index.scss`의 선언은 생략해도 됩니다.
 ```scss
 @import '/scss/helpers';
 ```
 
-### _variables.scss
+### 2. _variables.scss
 기본 폰트 크기, 색상, 반응형 기준 등의 전역 변수가 담겨있습니다.
 
-### _mixins.scss
+### 3. _mixins.scss
 재사용 가능한 속성을 모아두었습니다.
 
-#### 1. fullscreen($z: 1, $p: 'absolute')
+#### fullscreen($z: 1, $p: 'absolute')
 화면 전체에 꽉 차게 만듭니다.
 
-```
-$z: z-index (default: 1)
-$p: position (default: absolute)
+```scss
+// $z: z-index (default: 1)
+// $p: position (default: absolute)
+
+@include fullscreen(1);
+@include fullscreen(2, 'fixed');
 ```
 
-#### 2. absolute($p: 'center')
+#### absolute($p: 'center')
 요소를 공중에 띄우며 `$p` 값을 기준으로 정렬합니다.
 
-```
-$p: center(정중앙), vertical(세로중앙), horizontal(가로중앙)
+```scss
+// $p: center(정중앙), vertical(세로중앙), horizontal(가로중앙)
+@include absolute();
+@include absolute('vertical');
 ```
 
-#### 3. disable($boolean: 'true')
+#### disable($boolean: 'true')
 사용자의 클릭(또는 터치) 액션 및 선택을 막습니다.
 
-```
-$boolean: true, false (default: true)
+```scss
+// $boolean: true, false (default: true)
+.element {
+  @include disabled();
+
+  @media ($md_down) {
+    @include disabled('false');
+  }
+}
 ```
 
 
-#### 4. text-ellipsis()
+#### text-ellipsis()
 한 줄 말줄임 처리를 합니다.
 
-#### 5. box-ellipsis($line: 3, $lineHeight: 20px, $boxHeight: 'auto')
+```scss
+.element {
+  @include text-ellipsis();
+}
+```
+
+#### box-ellipsis($line: 3, $lineHeight: 20px, $boxHeight: 'auto')
 여러 줄 말줄임 처리를 합니다. 파라미터를 변경해 원하는 크기로 맞출 수 있고 박스 크기를 자유롭게 하거나 고정 값으로 설정할 수 있습니다.
 
-```
-$line: 1~n (default: 3)
-$lineHeight: 00px (default 20px)
-$boxHeight: auto, 40px (default: auto)
+```scss
+// $line: 1~n (default: 3)
+// $lineHeight: 00px (default 20px)
+// $boxHeight: auto, 40px (default: auto)
+
+.element {
+  // line-height가 20px인 글을 3줄 표시 후 말줄임, 박스 높이 60px 고정
+  @include box-ellipsis(3, 20px, 60px);
+
+  // 박스 최대 높이 제한, 최대 높이를 넘지 않는 글은 말줄임 처리 안함
+  @include box-ellipsis(3, 20px);
+}
 ```
 
 #### 6. px to vw
@@ -94,7 +119,6 @@ $boxHeight: auto, 40px (default: auto)
 <br> 기준이 되는 `$max-width`는 helper/variables의 `$grid-breakpoints`의 `md` 값이 기준이 됩니다.
 
 ```scss
-// 사용 예시
 .element {
   margin: 0 auto 0;
   padding: 0 7px;
