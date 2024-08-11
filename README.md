@@ -53,8 +53,29 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 ### _mixins.scss
 재사용 사용할 속성이 모여있습니다.
 
-### _functions.scss
-단순 재사용이 아닌 기능이 동작하는 속성들을 관리합니다.
+#### 1. px to vw
+```scss
+  // 사용 예시
+  .element {
+    margin: 0 auto 0;
+    padding: 0 7px;
+    font-size: 16px;
+    grid-template-columns: 1fr 2fr;
+    width: auto;
+
+    // !important가 없는 경우
+    @include px-to-vw(margin, 0 auto 0);
+    @include px-to-vw(padding, 0 7px);
+    @include px-to-vw(grid-template-columns, 1fr 2fr);
+    @include px-to-vw(width, auto);
+
+    // !important가 있는 경우
+    @include px-to-vw(font-size, 16px, 1440px, true);
+
+    // $max-width를 수정하지 않고 !important만 사용해야 하는 경우
+    @include px-to-vw(font-size, 16px, $important: true);
+  }
+```
 
 <br>
 

@@ -72,3 +72,30 @@
     max-height: $lineHeight * $line;
   }
 }
+
+// px to vw
+@mixin px-to-vw($property, $value, $max-width: map.get($grid-breakpoints, 'md'), $important: false) {
+  @media (max-width: $max-width) {
+    $converted-value: ();
+
+    @each $item in $value {
+      @if $item == 0 {
+        // 0은 그대로 유지
+        $item: 0;
+      } @else if unit($item) == 'px' {
+        // px 단위 변환
+        $item: math.div($item, $max-width) * 100vw;
+      } @else if unitless($item) {
+        // 단위가 없는 값은 px로 가정하고 변환
+        $item: math.div($item, $max-width) * 100vw;
+      } @else {
+        // px 이외의 값은 변환하지 않고 그대로 유지
+        $item: $item;
+      }
+
+      $converted-value: list.append($converted-value, $item, space);
+    }
+
+    #{$property}: $converted-value if($important, !important, null);
+  }
+}
