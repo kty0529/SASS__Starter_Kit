@@ -51,9 +51,48 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 기본 폰트 크기, 색상, 반응형 기준 등의 전역 변수가 담겨있습니다.
 
 ### _mixins.scss
-재사용 사용할 속성이 모여있습니다.
+재사용 가능한 속성을 모아두었습니다.
 
-#### 1. px to vw
+#### 1. fullscreen($z: 1, $p: 'absolute')
+화면 전체에 꽉 차게 만듭니다.
+
+```
+$z: z-index (default: 1)
+$p: position (default: absolute)
+```
+
+#### 2. absolute($p: 'center')
+요소를 공중에 띄우며 `$p` 값을 기준으로 정렬합니다.
+
+```
+$p: center(정중앙), vertical(세로중앙), horizontal(가로중앙)
+```
+
+#### 3. disable($boolean: 'true')
+사용자의 클릭(또는 터치) 액션 및 선택을 막습니다.
+
+```
+$boolean: true, false (default: true)
+```
+
+
+#### 4. text-ellipsis()
+한 줄 말줄임 처리를 합니다.
+
+#### 5. box-ellipsis($line: 3, $lineHeight: 20px, $boxHeight: 'auto')
+여러 줄 말줄임 처리를 합니다. 파라미터를 변경해 원하는 크기로 맞출 수 있고 박스 크기를 자유롭게 하거나 고정 값으로 설정할 수 있습니다.
+
+```
+$line: 1~n (default: 3)
+$lineHeight: 00px (default 20px)
+$boxHeight: auto, 40px (default: auto)
+```
+
+#### 6. px to vw
+
+반응형 작업 중, 비율에 맞게 줄어들어야 하는 랜딩 페이지 등을 만들어야 하는 경우를 대비해 px 을 vw 단위로 변환해주는 mixin 입니다.
+<br> 기준이 되는 `$max-width`는 helper/variables의 `$grid-breakpoints`의 `md` 값이 기준이 됩니다.
+
 ```scss
 // 사용 예시
 .element {
