@@ -76,12 +76,12 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 @include absolute('vertical');
 ```
 
-#### disable($boolean: 'true')
+#### disable
 사용자의 클릭(또는 터치) 액션 및 선택을 막습니다.
 
 ```scss
 // @params($boolean: 'true')
-// $boolean: true, false
+// $boolean: 'true', 'false'
 
 .element {
   @include disabled();
@@ -112,10 +112,10 @@ helpers 파일을 한번에 import 하는 용도로 사용하기 위해 만들�
 // $boxHeight: 'auto', 40px
 
 .element {
-  // line-height가 20px인 글을 3줄 표시 후 말줄임, 박스 높이 60px 고정
+  // line-height가 20px인 글을 3줄 표시 후 말줄임, 박스 높이 지정 값으로 고정
   @include box-ellipsis(3, 20px, 60px);
 
-  // 박스 최대 높이 제한, 최대 높이를 넘지 않는 글은 말줄임 처리 안함
+  // 박스 최대 높이 제한, 최대 높이를 넘지 않는 글은 말줄임 처리 안함, 박스 크기 유동적
   @include box-ellipsis(3, 20px);
 }
 ```
