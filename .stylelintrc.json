@@ -6,10 +6,6 @@
   ],
   "plugins": ["stylelint-scss"],
   "rules": {
-    "block-opening-brace-space-before": "always",
-    "declaration-colon-space-after": "always-single-line",
-    "declaration-colon-space-before": "never",
-    "indentation": 2,
     "no-descending-specificity": null,
     "no-empty-source": null,
     "scss/operator-no-unspaced": true
