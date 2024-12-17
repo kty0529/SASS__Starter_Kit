@@ -1,10 +1,12 @@
+// use
+@use "../helpers/variables" as *;
+
 // 글자색
 @each $key, $value in $theme-colors {
   .text-#{$key} {
     color: $value;
   }
 }
-
 
 // 배경색
 @each $key, $value in $theme-colors {

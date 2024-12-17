@@ -41,7 +41,7 @@ img {
   height: auto;
 }
 
-img, iframe, video, object, embed, button, select, input, textarea {
+img, iframe, video, object, embed, button, select, input, textarea, svg {
   max-width: 100%;
   padding: 0;
   border: 0;
@@ -125,6 +125,7 @@ table {
   table-layout: fixed;
 }
 
+.blind,
 .screen-reader-text {
   position: absolute;
   overflow: hidden;
@@ -137,7 +138,7 @@ table {
   clip-path: inset(50%);
   word-wrap: normal !important;
 }
-
+.blind:focus,
 .screen-reader-text:focus {
   z-index: 100000;
   top: 5px;
@@ -161,27 +162,27 @@ h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2em;
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.8em;
 }
 
 h3 {
-  font-size: 1.6rem;
+  font-size: 1.6em;
 }
 
 h4 {
-  font-size: 1.4rem;
+  font-size: 1.4em;
 }
 
 h5 {
-  font-size: 1.2rem;
+  font-size: 1.2em;
 }
 
 h6 {
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 .text-primary {
@@ -249,18 +250,19 @@ h6 {
 }
 
 body {
-  padding: 0.625rem;
+  padding: 10px;
   background-color: #ecf0f1;
+  font-size: 16px;
 }
 @media (max-width: 767px) {
   body {
-    font-size: 0.875rem;
+    font-size: 14px;
   }
 }
 
 .container {
-  max-width: 67.5rem;
-  padding: 0 1rem;
+  max-width: 1080px;
+  padding: 0 16px;
   margin: 0 auto;
 }
 
