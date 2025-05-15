@@ -127,6 +127,16 @@ build /scss -> /css
 }
 ```
 
+#### hide-scrollbar
+
+스크롤바 외형을 숨겨줍니다.
+
+```scss
+.element {
+  @mixin hide-scrollbar();
+}
+```
+
 #### px to vw
 
 반응형 작업 중, 비율에 맞게 줄어들어야 하는 랜딩 페이지 등을 만들어야 하는 경우를 대비해 px 을 vw 단위로 변환해주는 mixin 입니다.
