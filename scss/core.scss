@@ -19,7 +19,8 @@ body {
 }
 
 .container {
-  max-width: $container;
+  width: 100%;
+  max-width: calc($container + ($gutter * 2));
   padding: 0 $gutter;
   margin: 0 auto;
 }
