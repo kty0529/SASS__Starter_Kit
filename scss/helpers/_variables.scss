@@ -1,6 +1,5 @@
 // use
 @use "sass:map";
-@use "./mixins" as *;
 
 // 색상값, 변수명 부트스트랩 카피
 // https://getbootstrap.com/docs/5.3/customize/color/
@@ -26,7 +25,7 @@ $theme-colors: (
 );
 
 // 레이아웃
-$container: 1080px;
+$container: 1440px;
 $gutter: 16px;
 
 // breakpoints

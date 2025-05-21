@@ -1,6 +1,6 @@
 // use
 @use "sass:map";
-@use "./helpers/variables" as *;
+@use "./helpers" as *;
 
 // base
 @use "./base/reset" as *;
@@ -19,8 +19,5 @@ body {
 }
 
 .container {
-  width: 100%;
-  max-width: calc($container + ($gutter * 2));
-  padding: 0 $gutter;
-  margin: 0 auto;
+  @include container;
 }
