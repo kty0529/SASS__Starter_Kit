@@ -71,7 +71,7 @@ build /scss -> /css
 #### absolute
 
 요소를 공중에 띄우며 `$p` 값을 기준으로 정렬합니다.
-<br>이 mixin이 적용된 요소는 `width`, `height`값이 필요합니다.
+<br>`width`, `height`값이 필요합니다.
 
 ```scss
 // @params($p: 'center')
@@ -93,7 +93,7 @@ build /scss -> /css
   @include disabled();
 
   @media ($md_down) {
-    @include disabled("false");
+    @include disabled(false); /* 모바일에서 재활성화 */
   }
 }
 ```
@@ -123,13 +123,14 @@ build /scss -> /css
   @include box-ellipsis(3, 20px, 60px);
 
   // 박스 최대 높이 제한, 최대 높이를 넘지 않는 글은 말줄임 처리 안함, 박스 크기 유동적
+  // 최대 높이는 $line * $lineHeight
   @include box-ellipsis(3, 20px);
 }
 ```
 
 #### hide-scrollbar
 
-스크롤바 외형을 숨겨줍니다.
+스크롤바의 외형을 숨겨줍니다.
 
 ```scss
 .element {
@@ -139,8 +140,8 @@ build /scss -> /css
 
 #### px to vw
 
-반응형 작업 중, 비율에 맞게 줄어들어야 하는 랜딩 페이지 등을 만들어야 하는 경우를 대비해 px 을 vw 단위로 변환해주는 mixin 입니다.
-<br> 기준이 되는 `$max-width`는 `helper/variables`의 `$grid-breakpoints`의 `md`값을 기준으로 합니다.
+반응형 작업 중, 비율에 맞게 줄어들어야 하는 랜딩 페이지 등을 제작할 때 사용할 수 있습니다.
+<br> 기준이 되는 `$max-width`는 `helper/variables`의 `$grid-breakpoints`의 `md(768px)`값을 기준으로 합니다.
 
 ```scss
 .element {
@@ -156,7 +157,7 @@ build /scss -> /css
   @include px-to-vw(grid-template-columns, 1fr 2fr);
   @include px-to-vw(width, auto);
 
-  // !important가 있는 경우
+  // $max-width를 수정하고 !important가 필요한 경우
   @include px-to-vw(font-size, 16px, 1440px, true);
 
   // $max-width를 수정하지 않고 !important만 사용해야 하는 경우
@@ -168,4 +169,4 @@ build /scss -> /css
 
 ## core.scss
 
-`/base`와 `/helpers`의 파일을 적절한 순서에 맞게 불러와 최종 compile 하는 파일입니다.
+`/base`와 `/helpers`의 파일을 적절한 순서에 맞게 불러오는 최종 파일입니다.
