@@ -1,172 +1,244 @@
-# SASS_Starter_Kit
+# SASS Starter Kit
 
-프로젝트를 진행할 때 반드시 포함하는 SASS 파일을 모아놓은 스타터 키트입니다.
+![Sass Badge](https://img.shields.io/badge/Powered%20by-Sass-cc6699?logo=sass&logoColor=white)
+![Stylelint Badge](https://img.shields.io/badge/Stylelint-14.16.1-263238?logo=stylelint&logoColor=white)
+![License Badge](https://img.shields.io/badge/License-MIT-brightgreen)
 
-개인적으로 사용하기 위해 만든 것이기 때문에 다른 스타일과 정상적으로 호환되지 않을 가능성이 크고 비정기적으로 **깜짝🎉** 업데이트됩니다.
-<br>참고용으로 봐주세요.
+> 반복되는 스타일 초기 세팅을 단 한 번의 `@use`로 해결하는 SCSS 스타터 키트입니다.
 
-<br>
+---
 
-## Install
+## 프로젝트 한눈에 보기
+| 항목 | 내용 |
+| ---- | ---- |
+| 엔트리 포인트 | `scss/core.scss` |
+| 주요 폴더 | `scss/base`, `scss/helpers`, `css/` |
+| 스크립트 | `npm run watch`, `npm run lint` |
+| 린터 규칙 | `stylelint-config-idiomatic-order`, `stylelint-config-recommended-scss` |
+| 라이선스 | MIT License |
 
-```
-npm run install
-npm run watch
-```
+---
 
-build /scss -> /css
+## 소개
+이 저장소는 프로젝트 시작 시 반복적으로 세팅하는 SCSS 초석을 빠르게 불러오기 위한 템플릿입니다. `core.scss` 한 파일만 포함하면 reset, typography, color 시스템과 자주 쓰는 믹스인이 한 번에 준비됩니다.
 
-빌드 위치를 변경하기 위해선 package.json의 `"watch": "sass --watch scss:css"` 내용을 변경하면 됩니다.
-<br>ex) `"watch": "sass --style=compressed --update --watch theme02/wp-content/themes/theme02/assets/scss/:theme02/wp-content/themes/theme02/assets/css/"`
-<br>옵션 관련은 [sass lang 공식 홈페이지](https://sass-lang.com/documentation/cli/dart-sass/)에서 확인하면 됩니다.
+**주요 특징**
+- `@use` 기반의 모듈식 구조로 부분 파일 간 의존성을 명확히 관리합니다.
+- 플랫 컬러 팔레트와 반응형 브레이크포인트가 미리 정의되어 빠른 커스터마이징이 가능합니다.
+- 실무에서 자주 쓰이는 레이아웃/유틸리티 믹스인을 문서화된 형태로 제공합니다.
 
-<br>
+---
 
-## base
+## 빠른 시작
+1. 패키지 설치: `npm install`
+2. 개발 모드: `npm run watch`
+   - 내부적으로 `sass --watch scss:css`가 실행되어 `scss/` 변경을 실시간으로 `css/`에 반영합니다.
+3. 출력 경로를 바꾸고 싶다면 `package.json`의 `watch` 스크립트를 수정하세요.
 
-### 1. \_reset.scss
-
-모든 브라우저에서 요소를 ​일관되게 보여주도록 스타일을 초기화 해줍니다.
-
-### 2. \_typography.scss
-
-`strong`, `heading` 등 문단 관련 공통 스타일을 관리합니다.
-
-### 3. \_colors.scss
-
-`/helpers/_variables.scss`에 정의된 `$theme-colors`를 기반으로 '글자색', '배경색'을 지정할 수 있는 기본 class가 선언되어있고 색상 관련 스타일을 관리하기 위해 추가했습니다.
-
-```html
-<span class="text-primary">글자색 #2c3e50</span>
-<div class="bg-info">배경색 #3498db</div>
+```json
+"watch": "sass --style=compressed --watch scss:dist/css"
 ```
 
-<br>
+---
 
-## helpers
+## 디렉터리 구조
+```
+SASS__Starter_Kit/
+  scss/
+    base/                // reset, typography, colors
+    helpers/             // variables, mixins, index
+    core.scss            // 최종 진입점
+  css/                   // Sass 컴파일 결과물
+  AGENTS.md              // 팀 가이드라인
+  package.json
+  .stylelintrc.json
+```
 
-필요한 곳에서 `@use './helpers/mixins' as *`를 선언해서 전체 호출하거나 필요한 값만 가져다 사용하면 됩니다.
+---
 
-### 1. \_variables.scss
+## 핵심 모듈 안내
+- **base**: 브라우저 초기화(`_reset.scss`), 타이포 스타일(`_typography.scss`), 컬러 헬퍼(`_colors.scss`).
+- **helpers**: 재사용 가능한 토큰과 믹스인을 제공하는 핵심 라이브러리 영역입니다.
+  - `_variables.scss`: `$theme-colors` 팔레트, 컨테이너 최대 폭과 `gutter`, `map.get` 기반 반응형 브레이크포인트를 선언합니다. 브랜드 컬러나 레이아웃 폭을 커스터마이징하려면 이 파일에서 값을 변경하세요.
+  - `_mixins.scss`: `fullscreen`, `absolute`, `hide-scrollbar`, `px-to-vw`, `container` 등 시맨틱 레이아웃과 유틸리티 믹스인을 모아두고 각 파라미터 기본값을 주석으로 안내합니다. 새 믹스인을 추가할 때도 이 파일에 문서화를 함께 남깁니다.
+  - `_index.scss`: 변수와 믹스인을 다시 export해 `@use "./helpers" as *` 한 줄로 전역 토큰을 불러올 수 있게 합니다.
+  - 사용 예:
+    ```scss
+    @use "./helpers" as *;
 
-기본 폰트 크기, 색상, 반응형 기준 등의 전역 변수가 담겨있습니다.
+    .container {
+      @include container();
+    }
 
-### 3. \_mixins.scss
+    .card-title {
+      color: map.get($theme-colors, 'primary');
+    }
+    ```
+- **core.scss**: base와 helpers를 지정된 순서로 불러오고, 이후 추가한 기능성 partial을 연결하는 허브입니다.
 
-재사용 가능한 속성을 모아두었습니다.
+---
 
-#### fullscreen
+## 개발 워크플로
+> **TIP** 새로운 partial을 만들었다면 `core.scss`에 `@use`를 추가해 워처가 인식하도록 하세요.
 
-화면 전체에 꽉 차게 만듭니다.
+- `css/`는 자동 생성 폴더입니다. 수동 편집 대신 SCSS에서 변경하세요.
+- 브레이크포인트 추가나 색상 팔레트 변경은 `helpers/_variables.scss`에서 관리합니다.
+- 변경 후 `npm run lint` 및 `npm run watch`를 실행해 스타일 가이드 준수와 컴파일 정상 여부를 확인합니다.
 
+---
+
+## 스타일 가이드 & 린트
+- 모든 SCSS는 두 칸 들여쓰기를 사용하며, 속성 순서는 `stylelint-config-idiomatic-order` 규칙을 따릅니다.
+- `npm run lint`로 Stylelint를 실행하고, 필요한 경우 `npx stylelint "scss/**/*.scss" --fix`로 자동 정렬하세요.
+- `.stylelintrc.json`은 `stylelint-config-recommended-scss`를 상속하므로 Sass 전용 문법 검사도 함께 진행됩니다.
+- 경고가 해결되지 않을 경우 주석으로 무시하기보다 변수/믹스인 재활용을 통해 구조적 개선을 시도하세요.
+
+---
+
+## 믹스인 레퍼런스
+### 요약 표
+| 믹스인 | 용도 | 기본 인자 |
+| ------ | ---- | ---------- |
+| `fullscreen` | 전체 화면 레이어 | `$z: 1`, `$p: "absolute"` |
+| `absolute` | 요소 정렬 제어 | `$p: "center"` |
+| `disable` | 인터랙션 비활성화 | `$boolean: "true"` |
+| `text-ellipsis` | 한 줄 말줄임 | - |
+| `box-ellipsis` | 다중 라인 말줄임 | `$line: 3`, `$lineHeight: 20px`, `$boxHeight: "auto"` |
+| `hide-scrollbar` | 스크롤바 숨김 | - |
+| `px-to-vw` | 반응형 단위 변환 | `$property`, `$value`, `$max-width`, `$important` |
+| `container` | 공통 레이아웃 폭 | - |
+
+> 아래는 각 믹스인에 대한 상세 설명과 예시 코드입니다.
+
+### `fullscreen($z: 1, $p: "absolute")`
+- 요소를 화면 전체에 채워 넣습니다. `z-index`와 `position`을 동시에 제어합니다.
+- 모달 배경처럼 전체 화면이 필요한 경우 사용하세요.
 ```scss
-// @params($z: 1, $p, 'absolute')
-// $z: z-index / 1~n (숫자)
-// $p: position / absolute, fixed
+@use "./helpers" as *;
 
-@include fullscreen(1);
-@include fullscreen(2, "fixed");
+.modal-backdrop {
+  @include fullscreen(20, "fixed");
+  background: rgba(0, 0, 0, 0.6);
+}
 ```
 
-#### absolute
-
-요소를 공중에 띄우며 `$p` 값을 기준으로 정렬합니다.
-<br>`width`, `height`값이 필요합니다.
-
+### `absolute($p: "center")`
+- 요소를 떠 있게 만들고 정렬 방향을 선택합니다. `center`, `vertical`, `horizontal`을 지원합니다.
 ```scss
-// @params($p: 'center')
-// $p: position / center(정중앙), vertical(세로중앙), horizontal(가로중앙)
-
-@include absolute();
-@include absolute("vertical");
+.tooltip {
+  width: 180px;
+  height: auto;
+  @include absolute("horizontal");
+}
 ```
 
-#### disable
-
-사용자의 클릭(또는 터치) 액션 및 선택을 막습니다.
-
+### `disable($boolean: "true")`
+- 사용자 상호작용을 비활성화합니다. 반응형 조건에 따라 다시 활성화할 수 있습니다.
 ```scss
-// @params($boolean: 'true')
-// $boolean: 'true', 'false'
-
-.element {
-  @include disabled();
+.button {
+  @include disable();
 
   @media ($md_down) {
-    @include disabled(false); /* 모바일에서 재활성화 */
+    @include disable(false);
   }
 }
 ```
 
-#### text-ellipsis
-
-한 줄 말줄임 처리를 합니다.
-
+### `text-ellipsis()`
+- 한 줄 말줄임 처리를 적용합니다.
 ```scss
-.element {
+.title {
+  max-width: 240px;
   @include text-ellipsis();
 }
 ```
 
-#### box-ellipsis
-
-여러 줄 말줄임 처리를 합니다. 파라미터를 변경해 원하는 크기로 맞출 수 있고 박스 크기를 자유롭게 하거나 고정 값으로 설정할 수 있습니다.
-
+### `box-ellipsis($line: 3, $lineHeight: 20px, $boxHeight: "auto")`
+- 여러 줄 말줄임을 지원합니다. `$boxHeight`를 `"fixed"`로 지정하면 고정 높이가 설정됩니다.
 ```scss
-// @params($line: 3, $lineHeight: 20px, $boxHeight: 'auto')
-// $line: 1~n (숫자)
-// $lineHeight: 00px
-// $boxHeight: 'auto', 40px
+.card-description {
+  @include box-ellipsis(4, 18px);
+}
 
-.element {
-  // line-height가 20px인 글을 3줄 표시 후 말줄임, 박스 높이 지정 값으로 고정
-  @include box-ellipsis(3, 20px, 60px);
-
-  // 박스 최대 높이 제한, 최대 높이를 넘지 않는 글은 말줄임 처리 안함, 박스 크기 유동적
-  // 최대 높이는 $line * $lineHeight
-  @include box-ellipsis(3, 20px);
+.card-description--fixed {
+  @include box-ellipsis(3, 22px, "fixed");
 }
 ```
 
-#### hide-scrollbar
-
-스크롤바의 외형을 숨겨줍니다.
-
+### `hide-scrollbar()`
+- 스크롤바 시각 요소를 숨깁니다. 스크롤 자체는 유지합니다.
 ```scss
-.element {
-  @mixin hide-scrollbar();
+.side-nav {
+  overflow-y: auto;
+  @include hide-scrollbar();
 }
 ```
 
-#### px to vw
-
-반응형 작업 중, 비율에 맞게 줄어들어야 하는 랜딩 페이지 등을 제작할 때 사용할 수 있습니다.
-<br> 기준이 되는 `$max-width`는 `helper/variables`의 `$grid-breakpoints`의 `md(768px)`값을 기준으로 합니다.
-
+### `px-to-vw($property, $value, $max-width: map.get($grid-breakpoints, "md"), $important: false)`
+- 픽셀 단위를 뷰포트 폭 기반 값으로 변환합니다. `$max-width`를 조정해 전환 기준을 변경할 수 있습니다.
 ```scss
-.element {
-  margin: 0 auto 0;
-  padding: 0 7px;
-  font-size: 16px;
-  grid-template-columns: 1fr 2fr;
-  width: auto;
+.hero {
+  @include px-to-vw(padding, 60px 120px, 1440px);
+}
 
-  // !important가 없는 경우
-  @include px-to-vw(margin, 0 auto 0);
-  @include px-to-vw(padding, 0 7px);
-  @include px-to-vw(grid-template-columns, 1fr 2fr);
-  @include px-to-vw(width, auto);
-
-  // $max-width를 수정하고 !important가 필요한 경우
-  @include px-to-vw(font-size, 16px, 1440px, true);
-
-  // $max-width를 수정하지 않고 !important만 사용해야 하는 경우
-  @include px-to-vw(font-size, 16px, $important: true);
+.hero__title {
+  @include px-to-vw(font-size, 32px, $important: true);
 }
 ```
 
-<br>
+### `container()`
+- `$container`와 `$gutter` 값을 활용해 공통 레이아웃 폭을 정의합니다.
+```scss
+.page-container {
+  @include container();
+}
+```
 
-## core.scss
+### Breakpoints 활용 예시
+- `_variables.scss`에 선언된 `$md_up`, `$md_down` 등 미디어 쿼리 토큰을 사용하는 패턴입니다.
+```scss
+@use "./helpers" as *;
 
-`/base`와 `/helpers`의 파일을 적절한 순서에 맞게 불러오는 최종 파일입니다.
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  @media ($md_down) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ($sm_down) {
+    grid-template-columns: 1fr;
+  }
+}
+```
+
+---
+
+## 커스터마이징 가이드
+- **컬러 팔레트 변경**: `helpers/_variables.scss`의 `$theme-colors` 맵을 수정해 글로벌 테마 색상을 재정의합니다. 필요 시 새로운 키를 추가하고 `_colors.scss`에서 매칭되는 유틸리티 클래스를 확장하세요.
+- **레이아웃 폭 조정**: `$container`와 `$gutter` 값을 수정하면 `@include container()` 믹스인의 최대 폭과 내부 여백이 즉시 반영됩니다.
+- **브레이크포인트 추가/수정**: `$grid-breakpoints` 맵에 새 키를 추가한 뒤 `map.get`으로 접근하면 반응형 미디어 쿼리에 활용할 수 있습니다.
+- **빌드 경로 커스터마이징**: 프로젝트 구조가 다르다면 `package.json`의 `watch` 스크립트를 원하는 입력/출력 경로로 변경하거나 `--style=compressed` 옵션을 추가해 압축 결과물을 얻을 수 있습니다.
+- **프로젝트별 Partial 추가**: `scss/` 하위에 새 디렉터리를 만든 뒤 partial을 작성하고, `core.scss`에 `@use "./새경로/partial" as *;`를 추가해 빌드 체인에 연결합니다.
+
+---
+
+## 문제 해결 & FAQ
+> **NOTE** Sass CLI는 오류 발생 시 전체 빌드를 중단하므로 터미널 메시지를 항상 확인하세요.
+
+- **CSS가 갱신되지 않아요.**
+  - 워처가 실행 중인지 `npm run watch` 터미널을 확인하고, 필요 시 프로세스를 재시작하세요.
+  - SCSS에서 오류가 발생하면 Sass가 컴파일을 중단합니다. 터미널 로그의 오류 위치를 수정한 뒤 다시 저장하세요.
+- **Stylelint가 지나치게 오래 걸립니다.**
+  - `npx stylelint "scss/**/*.scss" --cache` 옵션으로 캐시를 활성화하면 반복 실행 속도를 개선할 수 있습니다.
+- **px-to-vw가 기대와 다르게 작동합니다.**
+  - 기본 최대 폭은 `$grid-breakpoints`의 `md` 값입니다. 특정 컴포넌트에서 다른 기준을 사용하려면 `@include px-to-vw(font-size, 16px, 1440px);`처럼 세 번째 인자를 지정하세요.
+- **Node 버전은 무엇이 필요한가요?**
+  - Dart Sass와 Stylelint는 LTS 버전(Node 16 이상)에서 테스트되었습니다. 구버전에서는 설치 오류가 발생할 수 있습니다.
+
+---
+
+## 라이선스 & 참고
+이 스타터 키트는 MIT License로 배포됩니다. 자유롭게 포크하고 수정·재배포할 수 있으며, 라이선스 전문은 [MIT License](https://opensource.org/licenses/MIT)를 참고하세요. 필요한 경우 프로젝트 요구에 맞춰 마음껏 커스터마이징해 활용하셔도 됩니다.
