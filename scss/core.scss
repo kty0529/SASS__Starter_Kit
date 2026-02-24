@@ -1,12 +1,13 @@
+// use
 @use "sass:map";
 @use "./helpers" as *;
 
-// base
+// 기본 스타일
 @use "./base/reset" as *;
 @use "./base/typography" as *;
 @use "./base/colors" as *;
 
-// styles
+// 개인 스타일
 body {
   padding: 10px;
   // background-color: $light;

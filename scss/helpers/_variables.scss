@@ -1,6 +1,7 @@
+// use
 @use "sass:map";
 
-// Colors
+// 테마 색상
 // https://getbootstrap.com/docs/5.3/customize/color/
 // https://flatuicolors.com/palette/defo
 $primary: #2c3e50;
@@ -23,11 +24,11 @@ $theme-colors: (
   "dark": $dark,
 );
 
-// Layout
+// 레이아웃 기본값
 $container: 1440px;
 $gutter: 16px;
 
-// Breakpoints
+// 반응형 분기
 // https://getbootstrap.com/docs/5.3/layout/breakpoints/#available-breakpoints
 $grid-breakpoints: (
   xs: 0,
