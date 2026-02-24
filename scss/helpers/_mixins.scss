@@ -86,9 +86,13 @@
 }
 
 // container
-@mixin container() {
+@mixin container($useGutter: "true") {
   width: 100%;
-  max-width: calc($container + ($gutter * 2));
-  padding: 0 $gutter;
+  @if $useGutter == "true" {
+    max-width: calc($container + ($gutter * 2));
+    padding: 0 $gutter;
+  } @else {
+    max-width: $container;
+  }
   margin: 0 auto;
 }
