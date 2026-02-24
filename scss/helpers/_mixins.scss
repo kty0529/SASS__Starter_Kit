@@ -3,11 +3,13 @@
 @use "./variables" as *;
 
 // 화면 채우기
-@mixin fullscreen($z: 1, $p: "absolute") {
-  position: #{$p};
+@mixin fullscreen($z: 1, $p: absolute) {
+  position: $p;
   z-index: $z;
-  top: 0;
-  left: 0;
+  @if $p != static and $p != "static" {
+    top: 0;
+    left: 0;
+  }
   width: 100%;
   height: 100%;
 }
@@ -65,10 +67,11 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: $line;
   line-height: $lineHeight;
+  overflow-wrap: break-word;
   text-align: left;
   white-space: normal;
   word-break: break-all;
-  word-wrap: break-word;
+
   @if ($boxHeight) == "fixed" {
     height: $line * $lineHeight;
   } @else {
@@ -101,10 +104,10 @@
       @if $item == 0 {
         // 0은 그대로 유지
         $item: 0;
-      } @else if unit($item) == "px" {
+      } @else if math.unit($item) == "px" {
         // px 단위 변환
         $item: math.div($item, $max-width) * 100vw;
-      } @else if unitless($item) {
+      } @else if math.unitless($item) {
         // 단위가 없는 값은 px로 가정하고 변환
         $item: math.div($item, $max-width) * 100vw;
       } @else {
@@ -115,6 +118,7 @@
       $converted-value: list.append($converted-value, $item, space);
     }
 
+    // stylelint-disable-next-line no-invalid-position-declaration -- 동적 속성 선언에서 발생하는 오탐 방지
     #{$property}: $converted-value if($important, !important, null);
   }
 }
