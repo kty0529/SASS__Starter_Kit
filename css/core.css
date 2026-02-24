@@ -1,8 +1,11 @@
-*, ::before, ::after {
+*,
+::before,
+::after {
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   padding: 0;
   margin: 0;
   color: #000;
@@ -15,10 +18,20 @@ html, body {
   overflow-x: clip;
   -webkit-text-size-adjust: 100%;
   word-break: break-all;
-  word-wrap: break-word;
 }
 
-main, header, footer, section, article, aside, nav, hgroup, details, menu, figure, figcaption {
+main,
+header,
+footer,
+section,
+article,
+aside,
+nav,
+hgroup,
+details,
+menu,
+figure,
+figcaption {
   display: block;
 }
 
@@ -27,11 +40,22 @@ a {
   text-decoration: none;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
 }
 
-ol, ul, li, dl, dt, dd {
+ol,
+ul,
+li,
+dl,
+dt,
+dd {
   padding: 0;
   margin: 0;
   list-style: none;
@@ -41,7 +65,16 @@ img {
   height: auto;
 }
 
-img, iframe, video, object, embed, button, select, input, textarea, svg {
+img,
+iframe,
+video,
+object,
+embed,
+button,
+select,
+input,
+textarea,
+svg {
   max-width: 100%;
   padding: 0;
   border: 0;
@@ -54,7 +87,8 @@ img, iframe, video, object, embed, button, select, input, textarea, svg {
   vertical-align: middle;
 }
 
-input, textarea {
+input,
+textarea {
   appearance: none;
 }
 
@@ -80,15 +114,17 @@ button,
 input[type=button],
 input[type=submit],
 input[type=reset] {
-  appearance: button;
+  appearance: auto;
 }
 
 ::file-selector-button {
-  appearance: button;
+  appearance: auto;
   font: inherit;
 }
 
-button, select, label {
+button,
+select,
+label {
   cursor: pointer;
 }
 
@@ -96,12 +132,15 @@ small {
   font-size: 80%;
 }
 
-code, kbd, samp {
+code,
+kbd,
+samp {
   font-family: "Menlo", "Consolas", "monospace", sans-serif;
   font-size: 1em;
 }
 
-sub, sup {
+sub,
+sup {
   position: relative;
   font-size: 0.75em;
   line-height: 0;
@@ -134,9 +173,8 @@ table {
   padding: 0;
   border: 0;
   margin: -1px;
-  clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
-  word-wrap: normal !important;
+  overflow-wrap: normal !important;
 }
 .blind:focus,
 .screen-reader-text:focus {
@@ -148,7 +186,6 @@ table {
   height: auto;
   padding: 15px 23px 14px;
   background-color: #eee;
-  clip: auto !important;
   clip-path: none;
   color: #444;
   font-size: 1em;
